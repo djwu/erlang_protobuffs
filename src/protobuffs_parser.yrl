@@ -31,7 +31,7 @@ g_element -> g_var g_var g_var '=' integer g_default ';'	: {unwrap('$5'), pack_r
 g_element -> g_var '=' integer ';'				: {'$1', unwrap('$3')}.
 g_element -> g_var integer g_var integer ';' 			: {'$1', unwrap('$2'), unwrap('$4')}.
 g_element -> g_var integer g_var g_var ';' 			: {'$1', unwrap('$2'), '$4'}.
-g_element -> g_var g_var '=' g_value ';'			: {'$1', '$2', '$4'}.
+g_element -> g_var g_var '=' g_value ';'			: {'$4', 'optional', safe_string('$1'), safe_string('$2'), 'none'}.
 g_element -> g_message						: '$1'.
 
 g_var -> var 							: unwrap('$1').
